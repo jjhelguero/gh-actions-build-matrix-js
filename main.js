@@ -14,7 +14,7 @@ function createMatrixContainer(n){
         }
     }
     matrix+= ']}'
-    console.log(matrix)
+
     return matrix
 
 }
@@ -24,9 +24,8 @@ async function run() {
     const batches = core.getInput('batches', {required: true})
 
     const matrix = createMatrixContainer(batches)
-    console.log(matrix)
     
-    core.setOutput('machines', matrix)
+    core.setOutput('matrix', matrix)
 }
 
 run()
