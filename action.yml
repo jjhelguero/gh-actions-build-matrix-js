@@ -1,0 +1,13 @@
+name: 'Github Action Build Matrix'
+description: 'Outputs list of containers for other actions to use'
+inputs:
+  n:
+    description: 'Number of parallel containers'
+    required: true
+    default: 1
+outputs:
+  matrix:
+    description: 'Matrix strategy JSON string'
+runs:
+  using: 'node16'
+  main: main.js
