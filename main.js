@@ -14,7 +14,7 @@ function createMatrixContainer(n){
             matrix+= ','
         }
     }
-    console.log(matrix)
+    matrix+= ']}'
     return matrix
 
 }
