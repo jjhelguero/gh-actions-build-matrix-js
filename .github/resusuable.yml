@@ -1,0 +1,35 @@
+name: reusable
+on:
+  workflow_call:
+    inputs:
+      n:
+        description: 'Number of parallel containers'
+        type: number
+        required: true
+        default: 1
+    outputs:
+      matrix:
+        description: 'Generated container string'
+        value: ${{ jobs.prepare.outputs.matrix }}
+
+jobs:
+  prepare:
+    runs-on: [latest]
+    # explicitly set the output of this job
+    # so that other jobs can use it
+    outputs:
+      matrix: ${{ steps.prepare.outputs.matrix }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      # generate the list using a bash script
+      - name: Create matrix ⊹
+        id: prepare
+        # for reusable workflow, must use the full action reference
+        uses: jjhelguero/gh-actions-build-matrix-js@main
+        with:
+          n: ${{ inputs.n }} # number of containers to output
+
+      - name: Print result 🖨
+        run: echo '${{ steps.prepare.outputs.matrix }}'

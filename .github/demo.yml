@@ -1,0 +1,32 @@
+name: demo
+on: [push]
+
+jobs:
+  # generate a string with containers from 1 to N
+  prepare:
+    runs-on: [latest] 
+    # explicitly set the output of this job
+    # so that other jobs can use it
+    outputs:
+      matrix: ${{ steps.prepare.outputs.matrix }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      # generate the list using a bash script
+      - name: Create matrix ⊹
+        id: prepare
+        uses: ./
+        with:
+          n: 3
+
+      - name: Print result 🖨
+        run: echo '${{ steps.prepare.outputs.matrix }}'
+
+  # demo job that prints the generated string
+  print:
+    needs: [prepare]
+    runs-on: [latest]
+    steps:
+      - name: Print result 🖨
+        run: echo '${{ needs.prepare.outputs.matrix }}'
