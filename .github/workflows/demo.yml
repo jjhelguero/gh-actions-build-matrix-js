@@ -18,7 +18,7 @@ jobs:
       # generate the list using a bash script
       - name: Create matrix ⊹
         id: prepare
-        uses: ./build.matrix.sh
+        uses: ./
         with:
           batches: 3
 
