@@ -4,7 +4,7 @@ on: [push]
 jobs:
   # generate a string with containers from 1 to N
   prepare:
-    runs-on: [latest] 
+    runs-on: ubuntu-latest 
     # explicitly set the output of this job
     # so that other jobs can use it
     outputs:
@@ -26,7 +26,7 @@ jobs:
   # demo job that prints the generated string
   print:
     needs: [prepare]
-    runs-on: [latest]
+    runs-on: ubuntu-latest
     steps:
       - name: Print result 🖨
         run: echo '${{ needs.prepare.outputs.matrix }}'

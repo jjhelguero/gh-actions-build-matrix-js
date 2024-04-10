@@ -14,7 +14,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: [latest]
+    runs-on: ubuntu-latest
     # explicitly set the output of this job
     # so that other jobs can use it
     outputs:

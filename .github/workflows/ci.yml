@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   release:
-    runs-on: [latest]
+    runs-on: ubuntu-latest
     name: release
     # only release from the master branch
     if: github.ref == 'refs/heads/main'
