@@ -3,9 +3,9 @@ const exec = require('@actions/exec')
 
 async function run() {
     // Get some input values
-    const machines = core.getInput('machines', {required: true})
+    const batches = core.getInput('n', {required: true})
 
-    const matrix = await exec.exec(`./build-matrix.js ${machines}`)
+    const matrix = await exec.exec(`./build-matrix.js ${batches}`)
     
     core.setOutput('machines', matrix)
 }
