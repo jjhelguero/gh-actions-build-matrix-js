@@ -1,7 +1,7 @@
 name: 'Github Action Build Matrix'
 description: 'Outputs list of containers for other actions to use'
 inputs:
-  n:
+  batches:
     description: 'Number of parallel containers'
     required: true
     default: 1

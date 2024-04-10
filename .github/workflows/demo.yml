@@ -20,7 +20,7 @@ jobs:
         id: prepare
         uses: ./
         with:
-          n: 3
+          batches: 3
 
       - name: Print result 🖨
         run: echo '${{ steps.prepare.outputs.matrix }}'
